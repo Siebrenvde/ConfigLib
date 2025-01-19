@@ -5,6 +5,7 @@ import org.quiltmc.config.api.annotations.DisplayNameConvention;
 import org.quiltmc.config.api.values.ValueTreeNode;
 import org.quiltmc.config.impl.util.SerializerUtils;
 
+@SuppressWarnings("unused")
 public class ConfigUtils {
 
     public static String getDisplayName(ValueTreeNode value) {

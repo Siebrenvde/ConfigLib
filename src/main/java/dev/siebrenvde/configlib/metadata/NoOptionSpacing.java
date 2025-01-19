@@ -8,13 +8,13 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.Optional;
 
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
 public @interface NoOptionSpacing {
-    MetadataType<OptionSpacing, Builder> TYPE = MetadataType.create(Optional::empty, Builder::new);
+
+    MetadataType<OptionSpacing, Builder> TYPE = MetadataType.create(Builder::new);
 
     class OptionSpacing {}
 

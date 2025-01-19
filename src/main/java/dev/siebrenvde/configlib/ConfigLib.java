@@ -10,6 +10,7 @@ import org.quiltmc.config.implementor_api.ConfigFactory;
 
 import java.nio.file.Path;
 
+@SuppressWarnings("unused")
 public class ConfigLib {
 
     static {

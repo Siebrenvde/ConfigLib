@@ -8,14 +8,13 @@ import org.quiltmc.config.impl.StringIterator;
 import java.lang.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Repeatable(ConfigComment.ConfigComments.class)
 public @interface ConfigComment {
 
-    MetadataType<ConfigCommentList, Builder> TYPE = MetadataType.create(Optional::empty, Builder::new);
+    MetadataType<ConfigCommentList, Builder> TYPE = MetadataType.create(Builder::new);
 
     String value();
 

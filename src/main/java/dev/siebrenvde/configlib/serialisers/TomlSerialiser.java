@@ -2,7 +2,7 @@ package dev.siebrenvde.configlib.serialisers;
 
 import dev.siebrenvde.configlib.metadata.ConfigComment;
 import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
-import dev.siebrenvde.configlib.metadata.WriteCondition;
+import dev.siebrenvde.configlib.metadata.SkipWrite;
 import dev.siebrenvde.configlib.utils.SerialiserUtils;
 import org.quiltmc.config.api.Config;
 import org.quiltmc.config.api.Constraint;
@@ -41,7 +41,7 @@ public class TomlSerialiser implements Serializer {
             writeNewline(to);
         }
         for (ValueTreeNode node : nodes) {
-            if(node.hasMetadata(WriteCondition.TYPE)) {
+            if(node.hasMetadata(SkipWrite.TYPE)) {
                 continue;
             }
 
@@ -82,7 +82,7 @@ public class TomlSerialiser implements Serializer {
                 writeNewline(to);
             } else {
                 writeTableKey(key, to, indent);
-                write(config, to, (ValueTreeNode.Section) node, indent + 1, firstValue, false);
+                write(config, to, (ValueTreeNode.Section) node, indent + 1, false, false);
             }
         }
     }
