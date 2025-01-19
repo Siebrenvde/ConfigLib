@@ -39,7 +39,6 @@ public class TomlSerialiser implements Serializer {
         }
         for (ValueTreeNode node : nodes) {
             if(node.hasMetadata(WriteCondition.TYPE)) {
-                System.out.println(node.key());
                 continue;
             }
 
