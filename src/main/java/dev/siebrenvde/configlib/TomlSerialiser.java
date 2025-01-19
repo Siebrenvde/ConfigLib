@@ -30,7 +30,6 @@ public class TomlSerialiser implements Serializer {
 
     private void write(Config config, OutputStream to, Iterable<ValueTreeNode> nodes, int indent, boolean firstValue, boolean isRoot) throws IOException {
         if(config.hasMetadata(ConfigComment.TYPE) && isRoot) {
-            isRoot = false;
             for(String comment : config.metadata(ConfigComment.TYPE)) {
                 to.write(("# " + comment).getBytes());
                 writeNewline(to);
@@ -79,7 +78,7 @@ public class TomlSerialiser implements Serializer {
                 writeNewline(to);
             } else {
                 writeTableKey(key, to, indent);
-                write(config, to, (ValueTreeNode.Section) node, indent + 1, firstValue, isRoot);
+                write(config, to, (ValueTreeNode.Section) node, indent + 1, firstValue, false);
             }
         }
     }
