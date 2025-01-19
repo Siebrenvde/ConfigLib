@@ -3,6 +3,7 @@ package dev.siebrenvde.configlib.serialisers;
 import dev.siebrenvde.configlib.metadata.ConfigComment;
 import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
 import dev.siebrenvde.configlib.metadata.WriteCondition;
+import dev.siebrenvde.configlib.utils.SerialiserUtils;
 import org.quiltmc.config.api.Config;
 import org.quiltmc.config.api.Constraint;
 import org.quiltmc.config.api.Serializer;
@@ -119,7 +120,7 @@ public class TomlSerialiser implements Serializer {
     }
 
     private static void writeString(String string, OutputStream to) throws IOException {
-        to.write(("\"" + string + "\"").getBytes());
+        to.write(("\"" + SerialiserUtils.sanitiseString(string) + "\"").getBytes());
     }
 
     private static void writeMap(ValueMap<?> map, OutputStream to, int indent) throws IOException {
