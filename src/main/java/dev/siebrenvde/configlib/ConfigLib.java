@@ -18,10 +18,34 @@ public class ConfigLib {
         ConfigFieldAnnotationProcessors.register(ConfigComment.ConfigComments.class, new ConfigComment.Processor());
     }
 
+    /**
+     * Creates a TOML config using the directory name as the family
+     * @param directory the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @param <T> a {@link ReflectiveConfig} from the provided class
+     */
     public static <T extends ReflectiveConfig> T toml(Path directory, String name, Class<T> configClass) {
+        return toml(
+            directory.getParent(),
+            directory.getFileName().toString(),
+            name,
+            configClass
+        );
+    }
+
+    /**
+     * Creates a new TOML config
+     * @param directory the global config directory
+     * @param family the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @return a {@link ReflectiveConfig} from the provided class
+     */
+    public static <T extends ReflectiveConfig> T toml(Path directory, String family, String name, Class<T> configClass) {
         return ConfigFactory.create(
             new ConfigEnvironment(directory, TomlSerialiser.INSTANCE),
-            "",
+            family,
             name,
             configClass
         );
