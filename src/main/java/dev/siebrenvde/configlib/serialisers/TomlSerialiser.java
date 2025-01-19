@@ -1,5 +1,8 @@
-package dev.siebrenvde.configlib;
+package dev.siebrenvde.configlib.serialisers;
 
+import dev.siebrenvde.configlib.metadata.ConfigComment;
+import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
+import dev.siebrenvde.configlib.metadata.WriteCondition;
 import org.quiltmc.config.api.Config;
 import org.quiltmc.config.api.Constraint;
 import org.quiltmc.config.api.Serializer;

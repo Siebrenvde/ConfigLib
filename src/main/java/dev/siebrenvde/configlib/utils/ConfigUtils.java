@@ -1,4 +1,4 @@
-package dev.siebrenvde.configlib;
+package dev.siebrenvde.configlib.utils;
 
 import org.quiltmc.config.api.annotations.DisplayName;
 import org.quiltmc.config.api.annotations.DisplayNameConvention;

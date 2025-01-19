@@ -1,4 +1,4 @@
-package dev.siebrenvde.configlib;
+package dev.siebrenvde.configlib.metadata;
 
 import org.quiltmc.config.api.annotations.ConfigFieldAnnotationProcessor;
 import org.quiltmc.config.api.metadata.MetadataContainerBuilder;
