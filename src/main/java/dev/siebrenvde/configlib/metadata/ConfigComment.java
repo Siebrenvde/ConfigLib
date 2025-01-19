@@ -9,6 +9,9 @@ import java.lang.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adds a comment to the top of a config file
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Repeatable(ConfigComment.ConfigComments.class)

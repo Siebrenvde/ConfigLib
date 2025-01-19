@@ -8,6 +8,13 @@ import org.quiltmc.config.impl.util.SerializerUtils;
 @SuppressWarnings("unused")
 public class ConfigUtils {
 
+    /**
+     * Gets the display name for the provided node
+     * <p></p>
+     * When no display name is set, defaults to {@link SerializerUtils#getSerializedName(ValueTreeNode)}
+     * @param value the node
+     * @return the display name, if present
+     */
     public static String getDisplayName(ValueTreeNode value) {
         if (value.hasMetadata(DisplayName.TYPE)) {
             return value.metadata(DisplayName.TYPE).getName();
