@@ -14,17 +14,11 @@ repositories {
     }
 }
 
-configurations {
-    create("shade")
-    compileOnly.get().extendsFrom(configurations["shade"])
-}
-val shade = configurations.getByName("shade")
-
 var quiltVersion: String = "1.3.2"
 
 dependencies {
-    shade("org.quiltmc:quilt-config:$quiltVersion")
-    shade("org.quiltmc.quilt-config.serializers:toml:$quiltVersion")
+    api("org.quiltmc:quilt-config:$quiltVersion")
+    api("org.quiltmc.quilt-config.serializers:toml:$quiltVersion")
 }
 
 java {
@@ -34,8 +28,6 @@ java {
 
 tasks.shadowJar {
     archiveClassifier.set("")
-
-    configurations = listOf(shade)
 
     exclude("META-INF/**")
     exclude("LICENSE")
