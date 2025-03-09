@@ -1,13 +1,11 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
-    id("java")
+    id("java-library")
     id("com.gradleup.shadow") version "8.3.5"
     id("maven-publish")
 }
 
 group = "dev.siebrenvde"
-version = "0.2.0"
+version = "0.3.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -31,9 +29,10 @@ dependencies {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
-tasks.withType(ShadowJar::class) {
+tasks.shadowJar {
     archiveClassifier.set("")
 
     configurations = listOf(shade)
@@ -42,9 +41,6 @@ tasks.withType(ShadowJar::class) {
     exclude("LICENSE")
     exclude("org/jetbrains/**")
     exclude("org/intellij/**")
-
-    relocate("org.quiltmc.config", "dev.siebrenvde.configlib.libs.quilt.config")
-    relocate("com.electronwill", "dev.siebrenvde.configlib.libs")
 }
 
 publishing {
@@ -52,5 +48,21 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
         }
+        repositories.maven {
+            val repo = if (version.toString().endsWith("-SNAPSHOT")) "snapshots" else "releases"
+            url = uri("https://repo.siebrenvde.dev/${repo}/")
+            name = "siebrenvde"
+            credentials(PasswordCredentials::class)
+        }
+    }
+}
+
+val targetJavaVersion = 17
+java {
+    val javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
 }
