@@ -1,11 +1,13 @@
 package dev.siebrenvde.configlib.utils;
 
+import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.annotations.DisplayName;
 import org.quiltmc.config.api.annotations.DisplayNameConvention;
 import org.quiltmc.config.api.values.ValueTreeNode;
 import org.quiltmc.config.impl.util.SerializerUtils;
 
 @SuppressWarnings("unused")
+@NullMarked
 public class ConfigUtils {
 
     /**

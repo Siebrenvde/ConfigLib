@@ -1,5 +1,8 @@
 package dev.siebrenvde.configlib.utils;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public class SerialiserUtils {
 
     public static String sanitiseString(String string) {

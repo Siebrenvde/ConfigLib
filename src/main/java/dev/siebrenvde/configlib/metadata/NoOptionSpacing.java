@@ -1,5 +1,6 @@
 package dev.siebrenvde.configlib.metadata;
 
+import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.annotations.ConfigFieldAnnotationProcessor;
 import org.quiltmc.config.api.metadata.MetadataContainerBuilder;
 import org.quiltmc.config.api.metadata.MetadataType;
@@ -14,6 +15,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
+@NullMarked
 public @interface NoOptionSpacing {
 
     MetadataType<OptionSpacing, Builder> TYPE = MetadataType.create(Builder::new);

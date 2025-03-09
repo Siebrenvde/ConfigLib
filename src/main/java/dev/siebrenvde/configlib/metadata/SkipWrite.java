@@ -1,5 +1,6 @@
 package dev.siebrenvde.configlib.metadata;
 
+import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.metadata.MetadataType;
 import org.quiltmc.config.impl.ConfigFieldAnnotationProcessors;
 
@@ -12,9 +13,10 @@ import java.util.function.Supplier;
  * <p>
  * Useful for environment-specific options
  */
+@NullMarked
 public class SkipWrite {
 
-    public static MetadataType<SkipWrite, Builder> TYPE = MetadataType.create(Builder::new);
+    public static final MetadataType<SkipWrite, Builder> TYPE = MetadataType.create(Builder::new);
 
     /**
      * Registers the provided annotation to <b><u>not</u></b> write its affected field when the condition is <code>true</code>

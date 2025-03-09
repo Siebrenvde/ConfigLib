@@ -1,5 +1,6 @@
 package dev.siebrenvde.configlib.metadata;
 
+import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.annotations.ConfigFieldAnnotationProcessor;
 import org.quiltmc.config.api.metadata.MetadataContainerBuilder;
 import org.quiltmc.config.api.metadata.MetadataType;
@@ -15,6 +16,7 @@ import java.util.List;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Repeatable(ConfigComment.ConfigComments.class)
+@NullMarked
 public @interface ConfigComment {
 
     MetadataType<ConfigCommentList, Builder> TYPE = MetadataType.create(Builder::new);
@@ -54,4 +56,5 @@ public @interface ConfigComment {
     @interface ConfigComments {
         ConfigComment[] value();
     }
+
 }

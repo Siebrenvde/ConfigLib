@@ -4,6 +4,7 @@ import dev.siebrenvde.configlib.metadata.ConfigComment;
 import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
 import dev.siebrenvde.configlib.metadata.SkipWrite;
 import dev.siebrenvde.configlib.utils.SerialiserUtils;
+import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.Config;
 import org.quiltmc.config.api.Constraint;
 import org.quiltmc.config.api.Serializer;
@@ -17,7 +18,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
 
+@NullMarked
 public class TomlSerialiser implements Serializer {
+
     public static final TomlSerialiser INSTANCE = new TomlSerialiser();
     private static final String INDENTATION = "  ";
     private static final Character NEWLINE = '\n';

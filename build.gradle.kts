@@ -19,6 +19,7 @@ var quiltVersion: String = "1.3.2"
 dependencies {
     api("org.quiltmc:quilt-config:$quiltVersion")
     api("org.quiltmc.quilt-config.serializers:toml:$quiltVersion")
+    api("org.jspecify:jspecify:1.0.0")
 }
 
 java {
