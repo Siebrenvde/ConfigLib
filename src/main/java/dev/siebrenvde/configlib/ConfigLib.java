@@ -25,7 +25,7 @@ public class ConfigLib {
      * @param directory the directory your config files are stored in
      * @param name the name of the file (without extension)
      * @param configClass the config class
-     * @param <T> a {@link ReflectiveConfig} from the provided class
+     * @return an instance of the config class
      */
     public static <T extends ReflectiveConfig> T toml(Path directory, String name, Class<T> configClass) {
         return toml(
@@ -42,7 +42,7 @@ public class ConfigLib {
      * @param family the directory your config files are stored in
      * @param name the name of the file (without extension)
      * @param configClass the config class
-     * @return a {@link ReflectiveConfig} from the provided class
+     * @return an instance of the config class
      */
     public static <T extends ReflectiveConfig> T toml(Path directory, String family, String name, Class<T> configClass) {
         return ConfigFactory.create(
