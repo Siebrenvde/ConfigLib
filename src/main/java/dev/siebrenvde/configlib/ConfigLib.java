@@ -2,7 +2,7 @@ package dev.siebrenvde.configlib;
 
 import dev.siebrenvde.configlib.metadata.ConfigComment;
 import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
-import dev.siebrenvde.configlib.serialisers.TomlSerialiser;
+import dev.siebrenvde.configlib.serialisers.toml.TomlSerialiser;
 import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.ReflectiveConfig;
 import org.quiltmc.config.implementor_api.ConfigEnvironment;
