@@ -17,9 +17,11 @@ repositories {
 var quiltVersion: String = "1.3.2"
 
 dependencies {
+    compileOnlyApi("org.jspecify:jspecify:1.0.0")
     api("org.quiltmc:quilt-config:$quiltVersion")
-    api("org.quiltmc.quilt-config.serializers:toml:$quiltVersion")
-    api("org.jspecify:jspecify:1.0.0")
+    implementation("org.quiltmc.quilt-config.serializers:toml:$quiltVersion")
+    implementation("org.quiltmc.quilt-config.serializers:json5:$quiltVersion")
+    implementation("org.quiltmc.parsers:json:0.3.1")
 }
 
 java {

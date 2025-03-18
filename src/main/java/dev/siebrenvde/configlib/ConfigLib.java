@@ -2,6 +2,7 @@ package dev.siebrenvde.configlib;
 
 import dev.siebrenvde.configlib.metadata.ConfigComment;
 import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
+import dev.siebrenvde.configlib.serialisers.json.JsonSerialiser;
 import dev.siebrenvde.configlib.serialisers.toml.TomlSerialiser;
 import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.ReflectiveConfig;
@@ -49,6 +50,72 @@ public class ConfigLib {
     public static <T extends ReflectiveConfig> T toml(Path directory, String family, String name, Class<T> configClass) {
         return ConfigFactory.create(
             new ConfigEnvironment(directory, TomlSerialiser.INSTANCE),
+            family,
+            name,
+            configClass
+        );
+    }
+
+    /**
+     * Creates a JSON5 config using the directory name as the family
+     * @param directory the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @return an instance of the config class
+     */
+    public static <T extends ReflectiveConfig> T json5(Path directory, String name, Class<T> configClass) {
+        return json5(
+            directory.getParent(),
+            directory.getFileName().toString(),
+            name,
+            configClass
+        );
+    }
+
+    /**
+     * Creates a new JSON5 config
+     * @param directory the global config directory
+     * @param family the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @return an instance of the config class
+     */
+    public static <T extends ReflectiveConfig> T json5(Path directory, String family, String name, Class<T> configClass) {
+        return ConfigFactory.create(
+            new ConfigEnvironment(directory, JsonSerialiser.JSON5),
+            family,
+            name,
+            configClass
+        );
+    }
+
+    /**
+     * Creates a JSON config using the directory name as the family
+     * @param directory the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @return an instance of the config class
+     */
+    public static <T extends ReflectiveConfig> T json(Path directory, String name, Class<T> configClass) {
+        return json(
+            directory.getParent(),
+            directory.getFileName().toString(),
+            name,
+            configClass
+        );
+    }
+
+    /**
+     * Creates a new JSON config
+     * @param directory the global config directory
+     * @param family the directory your config files are stored in
+     * @param name the name of the file (without extension)
+     * @param configClass the config class
+     * @return an instance of the config class
+     */
+    public static <T extends ReflectiveConfig> T json(Path directory, String family, String name, Class<T> configClass) {
+        return ConfigFactory.create(
+            new ConfigEnvironment(directory, JsonSerialiser.JSON),
             family,
             name,
             configClass
