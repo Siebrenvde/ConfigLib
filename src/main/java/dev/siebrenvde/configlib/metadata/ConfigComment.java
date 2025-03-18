@@ -42,12 +42,10 @@ public @interface ConfigComment {
         }
     }
 
-    final class Processor implements ConfigFieldAnnotationProcessor<ConfigComments> {
+    final class Processor implements ConfigFieldAnnotationProcessor<ConfigComment> {
         @Override
-        public void process(ConfigComments comments, MetadataContainerBuilder<?> builder) {
-            for (ConfigComment comment : comments.value()) {
-                builder.metadata(TYPE, b -> b.addComment(comment.value()));
-            }
+        public void process(ConfigComment comment, MetadataContainerBuilder<?> builder) {
+            builder.metadata(TYPE, b -> b.addComment(comment.value()));
         }
     }
 
@@ -55,6 +53,15 @@ public @interface ConfigComment {
     @Target(ElementType.TYPE)
     @interface ConfigComments {
         ConfigComment[] value();
+
+        final class Processor implements ConfigFieldAnnotationProcessor<ConfigComments> {
+            @Override
+            public void process(ConfigComments comments, MetadataContainerBuilder<?> builder) {
+                for (ConfigComment comment : comments.value()) {
+                    builder.metadata(TYPE, b -> b.addComment(comment.value()));
+                }
+            }
+        }
     }
 
 }

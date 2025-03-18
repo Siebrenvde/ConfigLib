@@ -5,19 +5,21 @@ import dev.siebrenvde.configlib.metadata.NoOptionSpacing;
 import dev.siebrenvde.configlib.serialisers.TomlSerialiser;
 import org.jspecify.annotations.NullMarked;
 import org.quiltmc.config.api.ReflectiveConfig;
-import org.quiltmc.config.impl.ConfigFieldAnnotationProcessors;
 import org.quiltmc.config.implementor_api.ConfigEnvironment;
 import org.quiltmc.config.implementor_api.ConfigFactory;
 
 import java.nio.file.Path;
+
+import static org.quiltmc.config.impl.ConfigFieldAnnotationProcessors.register;
 
 @SuppressWarnings("unused")
 @NullMarked
 public class ConfigLib {
 
     static {
-        ConfigFieldAnnotationProcessors.register(NoOptionSpacing.class, new NoOptionSpacing.Processor());
-        ConfigFieldAnnotationProcessors.register(ConfigComment.ConfigComments.class, new ConfigComment.Processor());
+        register(NoOptionSpacing.class, new NoOptionSpacing.Processor());
+        register(ConfigComment.class, new ConfigComment.Processor());
+        register(ConfigComment.ConfigComments.class, new ConfigComment.ConfigComments.Processor());
     }
 
     /**
