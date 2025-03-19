@@ -1,6 +1,5 @@
 plugins {
     id("java-library")
-    id("com.gradleup.shadow") version "8.3.5"
     id("maven-publish")
 }
 
@@ -27,15 +26,6 @@ dependencies {
 java {
     withSourcesJar()
     withJavadocJar()
-}
-
-tasks.shadowJar {
-    archiveClassifier.set("")
-
-    exclude("META-INF/**")
-    exclude("LICENSE")
-    exclude("org/jetbrains/**")
-    exclude("org/intellij/**")
 }
 
 publishing {
